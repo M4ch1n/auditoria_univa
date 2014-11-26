@@ -1,23 +1,14 @@
 <?php
+include_once('../logic/survey.php');
 
-require_once('../config/database.php');
+$survey = new Survey();
 
-$db = new database();
+?>
 
-$questions = $db->getAll('SELECT * FROM questions');
+<form action="../logic/survey.php" method="post">
 
-var_dump($questions);
-
-foreach($questions as $question) {
-	echo utf8_encode($question['question'])  . '<br>';
-
-	$sql = "SELECT * FROM answers WHERE id_question = :id_question";
-	$params = array('id_question' => $question['id']);
-
-	$answers = $db->query($sql, $params);
-
-	foreach ($answers as $answer) {
-		echo utf8_encode( $answer['answer'] ) . '<br>';
-	}
-
-}
+<?php 
+	echo $survey->getQuestions();
+?>
+<input type="submit" id="submit" name="submit" value="Submit">
+</form>
