@@ -28,20 +28,29 @@ function getAnswer(){
 			);
 		}			
 	});
-
 	
+	if(data.length < $('#hdnTotalQuestions').val()) {
+		alert("Faltan campos por llenar!");
+		return false;
+	}
+
+	var myData = {
+		survey : data,
+	}
+
 	console.log(data);
-	
-	//$( "#frmSurvey" ).submit();
-
 
 	$.ajax({
+		type : "POST",
 		url: '../logic/survey.php',
-		type: 'post',
-		data: data,
-		function(response) {
-			console.log("Response " + response);
-		}
-	})
+		dataType : "html",
+		data: myData,
+		success: function(data) {
+			console.log(data);
+			$('#container').html(data);
+			
+		},
+		failure: function(){ alert("Error!!!");}
+	});
 }
 

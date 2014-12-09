@@ -27,17 +27,17 @@ $survey = new Survey();
         <script src="../../js/vendor/bootstrap.min.js"></script>
     </head>
     <body>
-       <form id="frmSurvey" action="../logic/survey.php" method="post">
+        <div id="container">
+           <form id="frmSurvey" action="../logic/survey.php" method="post">
 
-			<?php 
-				echo $survey->getQuestions();
-			?>
-			<input type="hidden" id="hdnData" name="hdnData">
-			<input type="button" id="submitSurvey" name="submit" value="Submit">
-			<!-- <input type="submit" id="submit" name="submit" value="Submit"> -->
-		</form>
-
-        
+    			<?php 
+    				echo $survey->getQuestions();
+    			?>
+    			<input type="hidden" id="hdnData" name="hdnData">
+    			<input type="button" id="submitSurvey" name="submit" value="Submit">
+    			<!-- <input type="submit" id="submit" name="submit" value="Submit"> -->
+    		</form>   
+        </div>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="../../js/plugins.js"></script>
         <script src="../../js/main.js"></script>
