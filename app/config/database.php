@@ -36,8 +36,7 @@ class Database {
 		}		
 	}
 
-	public function getAll($sql) {
-		echo $sql;
+	public function getAll($sql) {		
 		try {
 
 			$stmt = self::$conn->query( $sql );
@@ -47,7 +46,6 @@ class Database {
 		} catch (PDOException $e) {
 			echo 'Error: ' . $e->getMessage();
 		}
-
 	}
 
 }
