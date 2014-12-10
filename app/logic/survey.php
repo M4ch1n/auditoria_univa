@@ -71,7 +71,8 @@ class Survey extends Database {
 					INNER JOIN surveys AS s 
 					ON a.id = s.id_answer 
 					WHERE s.id_question = :question 
-					GROUP BY answer ) AS counts';
+					GROUP BY answer 
+					ORDER BY total DESC) AS counts';
 
 		$params = array('question' => $idPregunta);
 		$suggests = self::$conn->query($sql, $params);
@@ -91,7 +92,7 @@ class Survey extends Database {
 		$sugerencia = '';
 
 		if($idPregunta == 1 && $idRespuesta == 3)
-			$sugerencia = "Tus empleados conocen sus responsabilidades, sigue as&aacute;";
+			$sugerencia = "Tus empleados conocen sus responsabilidades, sigue as&iacute;";
 		else if($idPregunta == 1 && $idRespuesta == 4)
 			$sugerencia = "Tienes que reorganizar las responsabilidades de tus empleados";
 
